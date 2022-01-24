@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "Dorn";
+  src: url('~assets/fonts/Dorn.ttf') format('truetype-variations');
+  font-weight: 400 700;
+  font-stretch: 50% 200%;
+}
+*{
+  min-height: 0vw;
+}
+body{
+  font-family: "Dorn", system-ui;
+  font-size: var(--size-bodytext);
+  font-weight: 400;
+  line-height: 130%;
+
+  font-variation-settings: "wdth" var(--width-axis);
+  font-optical-sizing: auto;
+
+  -moz-font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "liga" 1;
+  -ms-font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "liga" 1;
+  -o-font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "liga" 1;
+  -webkit-font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "liga" 1;
+  font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "liga" 1;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+}
+
+
+.intro{
+  text-align: center;
+  text-transform: uppercase;
+  & h1{
+    font-size: 3em;
+    line-height: 130%;
+
+  }
+}
+
+
+.title > *, h2{
+  font-size: 0.8em;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  margin-block: 2rem;
+}
+
+.title{
+  mix-blend-mode: difference;
+}
+
+article p{
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  margin-block: 0;
+/*
+    background: -webkit-linear-gradient(rgba(238, 238, 238, 0), rgb(255, 255, 255) 25%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-attachment: fixed;
+  */
+  + p {
+    text-indent: 4ch;
+  }
+}
+
+a{
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: inherit;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 1px;
+  &:hover {
+    color: rgb(192, 20, 20);
+  }
+}
+
+address p{
+  text-align: center;
+  font-style: normal;
+  margin-block: 2rem;
+
+  
+}
+
+.uppercase{
+  text-transform: uppercase;
+}

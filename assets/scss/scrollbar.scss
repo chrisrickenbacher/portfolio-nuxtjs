@@ -1,0 +1,82 @@
+.custom-scrollbar{
+
+/* idk */
+&::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+/* Turn on a 13x13 scrollbar */
+&::-webkit-scrollbar {
+width: 20px;
+height: 20px;
+box-shadow: inset 0px -1px gainsboro;
+}
+
+&::-webkit-scrollbar-button {
+  background-color: #dcdcdc;
+  &:hover {
+    background-color: white;
+  }
+}
+
+/* Turn on single button up on top, and down on bottom */
+&::-webkit-scrollbar-button:start:decrement,
+&::-webkit-scrollbar-button:end:increment {
+display: block;
+}
+
+/* Turn off the down area up on top, and up area on bottom */
+&::-webkit-scrollbar-button:start:increment,
+&::-webkit-scrollbar-button:end:decrement {
+display: none;
+}
+
+/* Place The scroll down button at the bottom */
+&::-webkit-scrollbar-button{
+width: 60px;
+&:increment {
+  background-image: url('~assets/images/right.svg');
+}
+&:decrement {
+  background-image: url('~assets/images/left.svg');
+}
+}
+
+&::-webkit-scrollbar-track {
+background-color: transparent;
+}
+
+/* Top area above thumb and below up button */
+&::-webkit-scrollbar-track-piece:start {
+background-color: transparent;
+}
+
+/* Bottom area below thumb and down button */
+&::-webkit-scrollbar-track-piece:end {
+  background-color: transparent;
+  /* Überprüfen */
+}
+
+/* Track below and above */
+&::-webkit-scrollbar-track-piece {
+background-color: transparent;
+}
+
+/* The thumb itself */
+&::-webkit-scrollbar-thumb {
+background-color: gainsboro;
+&:hover {
+  background-color: white;
+}
+}
+
+/* Corner */
+&::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* Resizer */
+&::-webkit-scrollbar-resizer {
+  display: none;
+}
+}

@@ -1,0 +1,67 @@
+
+
+
+.intro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    
+    background-image: linear-gradient(
+      /*180deg,
+      hsl(240deg 13% 32%) 0%,
+      hsl(233deg 35% 15%) 66%,
+      hsl(240deg 100% 6%) 90%,
+      hsl(0deg 0% 0%) 100%*/
+      /*180deg,
+      hsl(240deg 15% 22%) 11%,
+      hsl(238deg 24% 13%) 45%,
+      hsl(0deg 0% 0%) 87%*/
+      180deg,
+      #373759 0%, #212048 27.5%, #04061C 67.52%, #000000 85%
+    );
+
+    background-size: 150% 150%;
+
+    animation-name: variable-animation;
+    animation-direction: alternate;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+
+    & a {
+      text-decoration: none;
+    }
+  }
+  .logo{
+  background: -webkit-linear-gradient(rgba(238, 238, 238, 0), rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-attachment: fixed;
+}
+  
+@keyframes variable-animation {
+  0% {
+    font-variation-settings: "wdth" 50, "wght" 100;
+    background-position: 50% 100%;
+    background-size: 150% 150%;
+    opacity: 0;
+    }
+   
+  30%{
+    -webkit-text-stroke-color: Transparent;
+    font-variation-settings: "wdth" 200, "wght" 100;
+    background-position: 50% 100%;
+    opacity: 1;
+    }
+
+  100% {    
+    font-variation-settings: "wdth" 200, "wght" 700;
+    letter-spacing: 0.6rem;
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    }
+  }
+

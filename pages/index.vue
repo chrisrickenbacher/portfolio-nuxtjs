@@ -1,0 +1,69 @@
+<template>
+
+  <div>
+
+
+    <header class="intro">
+      <div class="logo">
+      <h1>Miskolczy</h1>
+      <h2>Archive</h2>
+      </div>
+    </header>
+
+
+    <main lang="en">
+      <div :id="project.slug" class="project" v-for="project of projects" :key="project">
+        <div class="title">
+          <h3 class="uppercase">{{ project.title }}</h3>
+          <h4 class="uppercase">{{ project.category }}</h4>
+        </div>
+
+        <article id="column">
+          <nuxt-content class="content" :document="project" />
+        </article>
+        <div class="gallery custom-scrollbar">    
+          <img v-for="image in project.gallery" :key="image" :src="require(`~/assets/images/${image}`)" loading="lazy" />
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <a href="#"><span class="uppercase">linkedin.com/</span><wbr>in/miskolczy</a>
+        <a href="#"><span class="uppercase">medium.com/</span><wbr>@miskolczy</a>
+      </div>
+      <address>
+        <p>Impressum</p>
+        <p>Konzept und Gestaltung<br>
+        Schrift – Dorn</p>
+        <p>Jonathan Pan Miskolczy<br>
+        Leopoldstrasse 9<br>
+        DE-79576 Weil am Rhein<br>
+        <p>mail(at)miskolczy.net</p>
+      </address>
+    </footer>
+    
+  </div>
+
+</template>
+
+
+<script>
+export default {
+   head: {
+    script: [
+      { src: '/js/script.js', body: true },
+    ]
+  },
+
+  async asyncData({ $content, params }) {
+    const projects = await $content('archive', params.slug)
+    .sortBy('createdAt', 'asc')
+    .fetch();
+ 
+  return {
+    projects
+    }
+  }
+}
+</script>

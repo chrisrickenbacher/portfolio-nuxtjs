@@ -12,7 +12,7 @@
 
 
     <main lang="en">
-      <div :id="project.slug" class="project" v-for="project of projects" :key="project">
+      <div :id="project.slug" class="project" v-for="(project, pIdx) of projects" :key="pIdx">
         <div class="title">
           <h3 class="uppercase">{{ project.title }}</h3>
           <h4 class="uppercase">{{ project.category }}</h4>
@@ -22,7 +22,7 @@
           <nuxt-content class="content" :document="project" />
         </article>
         <div class="gallery custom-scrollbar">    
-          <img v-for="image in project.gallery" :key="image" :src="require(`~/assets/images/${image}`)" loading="lazy" />
+          <img v-for="(image, Idx) in project.gallery" :key="Idx" :src="require(`~/assets/images/${image}`)" loading="lazy" />
         </div>
       </div>
     </main>
@@ -50,11 +50,11 @@
 
 <script>
 export default {
-   head: {
-    script: [
-      { src: '/js/script.js', body: true },
-    ]
-  },
+  //  head: {
+  //   script: [
+  //     { src: '/js/script.js', body: true },
+  //   ]
+  // },
 
   async asyncData({ $content, params }) {
     const projects = await $content('archive', params.slug)
@@ -67,28 +67,27 @@ export default {
   },
 
   methods: {
-    variableWidthAxis(column, container) {
-        const maxWidthAxis = 200;
-        const minWidthAxis = 50;
-        const maxColumnWidth = 600;
-        const minColumnWidth = 375;
-
-        const width = column.clientWidth;
-
-        const percent = (width - minColumnWidth) / (maxColumnWidth - minColumnWidth);
-        const scale = percent * (maxWidthAxis - minWidthAxis) + minWidthAxis;
-
-        const newWidth = width > maxColumnWidth ? maxWidthAxis : width < minColumnWidth ? minWidthAxis : scale;
-
-        container.style.setProperty("--width-axis", newWidth.toString());
+    variableWidthAxis() {
+      var column = document.getElementById("column");
+      var container = document.querySelector("body");
+      const maxWidthAxis = 200;
+      const minWidthAxis = 50;
+      const maxColumnWidth = 600;
+      const minColumnWidth = 375;
+      const width = column.clientWidth;
+      const percent = (width - minColumnWidth) / (maxColumnWidth - minColumnWidth);
+      const scale = percent * (maxWidthAxis - minWidthAxis) + minWidthAxis;
+      const newWidth = width > maxColumnWidth ? maxWidthAxis : width < minColumnWidth ? minWidthAxis : scale;
+      container.style.setProperty("--width-axis", newWidth.toString());
     }
   },
-  mounted() {
-    var column = document.getElementById("column");
-    var container = document.querySelector("body");
-    this.variableWidthAxis(column, container)
-    window.addEventListener("resize",  this.variableWidthAxis(column, container));
+  mounted: function() {
+    this.variableWidthAxis
+    window.addEventListener('resize',  this.variableWidthAxis);
     
-  }
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.variableWidthAxis);
+  },
 }
 </script>
